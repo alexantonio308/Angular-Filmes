@@ -1,3 +1,8 @@
-<p>
-  input-select works!
-</p>
+<div [formGroup]="formGroup">
+  <mat-form-field class="full-width">
+    <mat-select [placeholder]="titulo" [formControlName]="controlName">
+      <mat-option *ngFor="let opcao of opcoes" [value]="opçao">{{opção}}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="validacao.hasErrorValidate(formControl, 'required')">Campo obrigatório</mat-error>
+  </mat-form-field>
+</div>

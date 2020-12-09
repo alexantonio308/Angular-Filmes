@@ -1,36 +1,21 @@
 <mat-toolbar class="app-title">Cadastrar Filme</mat-toolbar>
 <div class="main-div">
   <mat-card class="center width50">
-    <form [formGroup]="cadastro" (ngSubmit)="salvar()" (ngReset)="reiniciarForm()">
+    <form autocomplete="off" novalidate [formGroup]="cadastro" (ngSubmit)="salvar()" (ngReset)="reiniciarForm()">
       <mat-card-content>
         <dio-input-text titulo="Título *" [formGroup]="cadastro" controlName="titulo"></dio-input-text>
+
         <dio-input-text titulo="Link Foto" [formGroup]="cadastro" controlName="urlFoto"></dio-input-text>
-        <mat-form-field class="full-width">
-          <input matInput readonly [matDatepicker]="picker" placeholder="Data de Lançamento *" name="dtLancamento" formControlName="dtLancamento" (click)="picker.open()">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-error *ngIf="validacao.hasErrorValidate(f.dtLancamento, 'required')">Campo obrigatório</mat-error>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+
+        <dio-input-date titulo="Data de Lançamento *" controlName="dtLancamento" [formGroup]="cadastro"></dio-input-date>
+
         <dio-input-textarea titulo="Descrição" [formGroup]="cadastro" controlName="descricao"></dio-input-textarea>
-        <mat-form-field class="full-width">
-          <input matInput type="number" min="0" max="10" step="0.1" placeholder="Nota IMDb *" name="nota" formControlName="nota">
-          <mat-error *ngIf="validacao.hasErrorValidate(f.nota, 'required')">Campo obrigatório</mat-error>
-          <mat-error *ngIf="validacao.hasErrorValidate(f.nota, 'min')">Campo precisa ter no mínimo o valor 0</mat-error>
-          <mat-error *ngIf="validacao.hasErrorValidate(f.nota, 'max')">Campo pode ter no máximo o valor 10 </mat-error>
-        </mat-form-field>
-        <dio-input-text titulo="Link IMDb *" [formGroup]="cadastro" controlName="urlIMDb"></dio-input-text>
 
-        <mat-form-field class="full-width">
-          <mat-select placeholder="Gênero *" formControlName="genero">
-            <mat-option value="Ação">Açao</mat-option>
-            <mat-option value="Aventura">Aventura</mat-option>
-            <mat-option value=">Ficção Científica">Ficção Científica</mat-option>
-            <mat-option value="Romance">Romance</mat-option>
-            <mat-option value="Terror">Terror</mat-option>
-          </mat-select>
-          <mat-error *ngIf="validacao.hasErrorValidate(f.genero, 'required')">Campo obrigatório</mat-error>
+        <dio-input-number titulo="Nota IMDb" controlName="nota" step="0.1" [formGroup]="cadastro"></dio-input-number>
 
-        </mat-form-field>
+        <dio-input-text titulo="Link IMDb" [formGroup]="cadastro" controlName="urlIMDb"></dio-input-text>
+
+        <dio-input-select titulo="Gênero*" [opcoes]="generos" controlName="genero" [formGroup]="cadastro"></dio-input-select>
       </mat-card-content>
       <mat-card-actions>
         <button type="submit" color="accent" mat-raised-button>Salvar</button>
