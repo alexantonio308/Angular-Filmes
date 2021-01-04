@@ -1,4 +1,4 @@
 export interface CampoGenerico {
-  tipo:string;
+  tipo: string;
   valor: any;
 }

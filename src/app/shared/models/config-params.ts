@@ -1,4 +1,4 @@
-import { CampoGenerico } from "./campo-generico";
+import { CampoGenerico } from './campo-generico';
 
 export interface ConfigParams {
   pagina?: number;

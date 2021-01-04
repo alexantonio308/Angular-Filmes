@@ -14,7 +14,7 @@ export class ConfigParamsService {
       httpParams = httpParams.set('_page', config.pagina.toString());
     }
     if (config.limite) {
-     httpParams = httpParams.set('_limit', config.pesquisa.toString());
+     httpParams = httpParams.set('_limit', config.limite.toString());
     }
     if (config.pesquisa) {
       httpParams = httpParams.set('q', config.pesquisa);
